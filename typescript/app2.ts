@@ -1,4 +1,8 @@
-class Carro {
+import { Carro } from './Carro';
+import { Pessoa } from './Pessoa';
+import { Concessionaria } from './Concessionaria';
+
+/*class Carro {
 
     private modelo: string;
     private numeroDePortas: number;
@@ -21,13 +25,13 @@ class Carro {
         return this.velocidade;
     }
 
-}
+}*/
 /*
 let carroA = new Carro('Mustang',4);
 carroA.acelerar();
 carroA.acelerar();
 console.log(carroA)*/
-
+/*
 class Concessionaria {
 
     private endereco: string;
@@ -45,11 +49,11 @@ class Concessionaria {
     public mostrarListaDeCarros(): Array<Carro> {
         return this.listaDeCarros;
     }
-}
+}*/
 /*
 let concessionaria = new Concessionaria('Rua A','Opala 3.0');
 console.log(concessionaria);*/
-
+/*
 class Pessoa {
 
     private nome: string;
@@ -77,7 +81,7 @@ class Pessoa {
     public dizerCarroQueTem(): Carro {
         return this.carro;
     }
-}
+}*/
 /*
 let pesssoa = new Pessoa('Sidão', 'Inpala 67', 'Opala 3.0');
 console.log(pesssoa);

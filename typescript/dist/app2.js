@@ -1,77 +1,103 @@
 "use strict";
-var Carro = /** @class */ (function () {
-    function Carro(modelo, numeroDePortas) {
-        this.velocidade = 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+var Carro_1 = require("./Carro");
+var Pessoa_1 = require("./Pessoa");
+var Concessionaria_1 = require("./Concessionaria");
+/*class Carro {
+
+    private modelo: string;
+    private numeroDePortas: number;
+    private velocidade: number = 0;
+
+    constructor(modelo: string, numeroDePortas: number) {
         this.modelo = modelo;
         this.numeroDePortas = numeroDePortas;
     }
-    Carro.prototype.acelerar = function () {
+
+    public acelerar(): void {
         this.velocidade = this.velocidade + 10;
-    };
-    Carro.prototype.parar = function () {
+    }
+
+    public parar(): void {
         this.velocidade = 0;
-    };
-    Carro.prototype.velocidadeAtual = function () {
+    }
+
+    public velocidadeAtual(): number {
         return this.velocidade;
-    };
-    return Carro;
-}());
+    }
+
+}*/
 /*
 let carroA = new Carro('Mustang',4);
 carroA.acelerar();
 carroA.acelerar();
 console.log(carroA)*/
-var Concessionaria = /** @class */ (function () {
-    function Concessionaria(endereco, listaDeCarros) {
+/*
+class Concessionaria {
+
+    private endereco: string;
+    private listaDeCarros: Array<Carro>;
+
+    constructor(endereco: string, listaDeCarros: Array<Carro>) {
         this.endereco = endereco;
         this.listaDeCarros = listaDeCarros;
     }
-    Concessionaria.prototype.fornecerEndereco = function () {
+
+    public fornecerEndereco(): string {
         return this.endereco;
-    };
-    Concessionaria.prototype.mostrarListaDeCarros = function () {
+    }
+
+    public mostrarListaDeCarros(): Array<Carro> {
         return this.listaDeCarros;
-    };
-    return Concessionaria;
-}());
+    }
+}*/
 /*
 let concessionaria = new Concessionaria('Rua A','Opala 3.0');
 console.log(concessionaria);*/
-var Pessoa = /** @class */ (function () {
-    function Pessoa(nome, carroPreferido, carro) {
+/*
+class Pessoa {
+
+    private nome: string;
+    private carroPreferido: string;
+    private carro: Carro;
+
+    constructor(nome: string, carroPreferido: string, carro: Carro) {
         this.nome = nome;
         this.carroPreferido = carroPreferido;
         this.carro = carro;
     }
-    Pessoa.prototype.dizerNome = function () {
+
+    public dizerNome(): string {
         return this.nome;
-    };
-    Pessoa.prototype.dizerCarroPreferido = function () {
+    }
+
+    public dizerCarroPreferido(): string {
         return this.carroPreferido;
-    };
-    Pessoa.prototype.comprarCarro = function (carro) {
+    }
+
+    public comprarCarro(carro: Carro): void {
         this.carro = carro;
-    };
-    Pessoa.prototype.dizerCarroQueTem = function () {
+    }
+
+    public dizerCarroQueTem(): Carro {
         return this.carro;
-    };
-    return Pessoa;
-}());
+    }
+}*/
 /*
 let pesssoa = new Pessoa('Sidão', 'Inpala 67', 'Opala 3.0');
 console.log(pesssoa);
 console.log(pesssoa.dizerCarroPreferido());*/
 /* --- criar carros --- */
-var carroA = new Carro('Mustang GT', 4);
-var carroB = new Carro('Inpala 67', 2);
-var carroC = new Carro('Fiat 147', 4);
+var carroA = new Carro_1.Carro('Mustang GT', 4);
+var carroB = new Carro_1.Carro('Inpala 67', 2);
+var carroC = new Carro_1.Carro('Fiat 147', 4);
 /* --- montar a lista de carros da concessionária --- */
 var listaDeCarros = [carroA, carroB, carroC];
-var concessionaria = new Concessionaria('Rua Dos Padres', listaDeCarros);
+var concessionaria = new Concessionaria_1.Concessionaria('Rua Dos Padres', listaDeCarros);
 /* --- exibir a lista de carros --- */
 //console.log(concessionaria.mostrarListaDeCarros());
 /* --- comprar o carro --- */
-var cliente = new Pessoa('Sidão', 'Opala 3.0 Alcool', carroA);
+var cliente = new Pessoa_1.Pessoa('Sidão', 'Opala 3.0 Alcool', carroA);
 console.log(cliente.dizerCarroPreferido());
 concessionaria.mostrarListaDeCarros().map(function (carro) {
     if (carro['modelo'] == cliente.dizerCarroPreferido()) {
