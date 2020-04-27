@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-sm-6 py-2">
-                <app-progresso></app-progresso>
+                <app-progresso [progresso]="progresso"></app-progresso><!--[Componente filho]/"Componente Pai"-->
             </div>
             <div class="col-sm-6 py-2">
                 <div class="d-flex justify-content-end">
@@ -15,7 +15,7 @@
                 <h6>{{ instrucao }}</h6>
                 <p>{{ rodadaFrase.fraseEng }}</p>
                 <div class="form-group">
-                    <textarea class="form-control" rows="3" (input)="atualizarResposta($event)"></textarea>
+                    <textarea class="form-control" rows="3" (input)="atualizarResposta($event)" [value]="resposta"></textarea>
                 </div>
             </div>
         </div>
