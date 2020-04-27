@@ -38,10 +38,10 @@ export class PainelComponent implements OnInit {
     //console.log('Verificar resposta: ', this.resposta);
     
     if (this.resposta.toLocaleLowerCase() == this.rodadaFrase.frasePtBr.toLocaleLowerCase()) {
-      alert('A Tradução está correta!');
+      //alert('A Tradução está correta!');
       //progresso
       this.progresso = this.progresso + (100 / this.frases.length);
-      console.log(this.progresso);
+      //console.log(this.progresso);
 
       //trocar pergunta da rodada
       this.rodada++;
