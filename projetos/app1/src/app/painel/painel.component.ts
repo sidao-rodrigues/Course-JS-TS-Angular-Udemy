@@ -12,10 +12,16 @@ export class PainelComponent implements OnInit {
 
   public frases: Array<Frase> = FRASES;
   public instrucao: string = 'Traduza a frase para PtBr';
+  public resposta: string;
 
   constructor() { console.log(this.frases); }
 
   ngOnInit(): void {
+  }
+  
+  public atualizarResposta(resposta: Event): void {
+    this.resposta = (<HTMLInputElement>resposta.target).value;
+    console.log(this.resposta);
   }
 
 }
