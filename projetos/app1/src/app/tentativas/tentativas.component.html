@@ -1,3 +1,6 @@
+<!--
 <img [src]="coracaoCheio" alt="Coração">
 <img [src]="coracaoCheio" alt="Coração">
 <img [src]="coracaoCheio" alt="Coração">
+-->
+<img *ngFor="let coracao of coracoes" [src]="coracao.exibeCoracao()"/>
