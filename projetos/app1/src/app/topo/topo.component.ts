@@ -10,4 +10,6 @@ import { Component } from "@angular/core"; //importa component do @angular/core
 })
 export class TopoComponent {
 
+    public titulo: string = 'Aprendendo Inglês';
+
 }
