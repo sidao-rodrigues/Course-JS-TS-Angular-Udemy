@@ -16,8 +16,15 @@ export class HomeComponent implements OnInit {
   constructor(private ofertaService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertas = this.ofertaService.getOfertas();
-    console.log(this.ofertas);
+    //this.ofertas = this.ofertaService.getOfertas();//nesse caso é sincrono, pois os dados da ofertasService está pronta, e não está buscando no BD
+    this.ofertaService.getOfertas2()
+      .then((ofertas: Array<Oferta>) => { 
+        console.log("a função resolve() foi resolvido dps de 3seg");
+        this.ofertas = ofertas; 
+      })
+      .catch((param: any) => { 
+        console.log(param) 
+      });
   }
 
 }
