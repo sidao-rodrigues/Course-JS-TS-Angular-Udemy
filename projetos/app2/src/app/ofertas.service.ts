@@ -1,6 +1,53 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+//import 'rxjs/add/operator/toPromise';
+
 import { Oferta } from "./shared/oferta.model";
 
+@Injectable()
 export class OfertasService {
+
+    constructor(private http: HttpClient){  }
+
+   
+
+    public getOfertas(): Promise<Oferta[]> {
+        //efetuar uma requisição http
+        return this.http.get('http://localhost:3000/ofertas?destaque=true')
+            .toPromise()
+            .then((resposta: any) => resposta);
+            //.then((resposta: any) => resposta.json();
+        //retornar uma promisse Array<Ofertas>
+    }
+    /*
+    public getOfertas2(): Promise<Oferta[]> {
+        return new Promise((resolve, reject) => {
+            //algum tipo de processamento, que ao finalizar, chama função resolve ou reject
+            let deu_certo = true;
+            if(deu_certo) {
+                setTimeout(() => resolve(this.ofertas), 3000);
+            } else {
+                reject({ codigo_erro: 404, mesagem_erro: 'Servidor não encontrado XY' });
+            }
+        })
+        .then((ofertas: Array<Oferta>) => {
+            //fazer alguma tratativa
+            console.log('primeiro then');
+            return ofertas;
+        })
+        .then((ofertas: Array<Oferta>) => {
+            //fazer outra tratativa
+            console.log('segundo then');
+            return new Promise((resolve2, reject2) => {
+                setTimeout(() => { resolve2(ofertas) }, 3000);
+            });
+        })
+        .then((ofertas: Array<Oferta>) => {
+            console.log('terceiro then executado apos 3 segundo, pois estava aguardando uma promisse ser resolvida');
+            return ofertas;
+        });
+    }
 
     public ofertas: Array<Oferta> = [
         {
@@ -51,37 +98,5 @@ export class OfertasService {
                 {url: "/assets/ofertas/3/img6.jpg"}
             ]
         }
-    ];
-
-    public getOfertas(): Array<Oferta> {
-        return this.ofertas;
-    }
-
-    public getOfertas2(): Promise<Oferta[]> {
-        return new Promise((resolve, reject) => {
-            //algum tipo de processamento, que ao finalizar, chama função resolve ou reject
-            let deu_certo = true;
-            if(deu_certo) {
-                setTimeout(() => resolve(this.ofertas), 3000);
-            } else {
-                reject({ codigo_erro: 404, mesagem_erro: 'Servidor não encontrado XY' });
-            }
-        })
-        .then((ofertas: Array<Oferta>) => {
-            //fazer alguma tratativa
-            console.log('primeiro then');
-            return ofertas;
-        })
-        .then((ofertas: Array<Oferta>) => {
-            //fazer outra tratativa
-            console.log('segundo then');
-            return new Promise((resolve2, reject2) => {
-                setTimeout(() => { resolve2(ofertas) }, 3000);
-            });
-        })
-        .then((ofertas: Array<Oferta>) => {
-            console.log('terceiro then executado apos 3 segundo, pois estava aguardando uma promisse ser resolvida');
-            return ofertas;
-        });
-    }
+    ];*/
 }
