@@ -10,8 +10,6 @@ export class OfertasService {
 
     constructor(private http: HttpClient){  }
 
-   
-
     public getOfertas(): Promise<Oferta[]> {
         //efetuar uma requisição http
         return this.http.get('http://localhost:3000/ofertas?destaque=true')
@@ -20,6 +18,13 @@ export class OfertasService {
             //.then((resposta: any) => resposta.json();
         //retornar uma promisse Array<Ofertas>
     }
+
+    public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {
+        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+            .toPromise()
+            .then((resposta: any) => resposta);
+    }
+
     /*
     public getOfertas2(): Promise<Oferta[]> {
         return new Promise((resolve, reject) => {
