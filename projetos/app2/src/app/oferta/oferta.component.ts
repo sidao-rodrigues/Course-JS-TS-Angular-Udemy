@@ -25,7 +25,19 @@ export class OfertaComponent implements OnInit {
         this.oferta = oferta;
       });
   
-    //console.log('ID :'+this.route.snapshot.params['id']);//snapshot
+    /*this.route.params.subscribe(
+      (parametro: any) => {
+        console.log(parametro);
+      },
+      (error: any) => {
+        console.log(error);
+      },
+      () => {
+        console.log('Processamento foi classificado como concluído');
+      } 
+    )*/
+    
+      //console.log('ID :'+this.route.snapshot.params['id']);//snapshot
     /*this.route.params.subscribe((parametro: any) => {
       console.log(parametro);
     })*///subscribe
