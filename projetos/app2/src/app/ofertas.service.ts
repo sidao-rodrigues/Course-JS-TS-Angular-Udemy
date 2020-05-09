@@ -15,7 +15,7 @@ export class OfertasService {
 
     public getOfertas(): Promise<Oferta[]> {
         //efetuar uma requisição http
-        return this.http.get(`${URL_API}?destaque=true`)
+        return this.http.get(`${URL_API}/ofertas?destaque=true`)
             .toPromise()
             .then((resposta: any) => resposta);
             //.then((resposta: any) => resposta.json();
@@ -23,18 +23,34 @@ export class OfertasService {
     }
 
     public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {
-        return this.http.get(`${URL_API}?categoria=${categoria}`)
+        return this.http.get(`${URL_API}/ofertas?categoria=${categoria}`)
             .toPromise()
             .then((resposta: any) => resposta);
     }
 
     public getOfertaPorId(id: number): Promise<Oferta> {
-        return this.http.get(`${URL_API}?id=${id}`)
+        return this.http.get(`${URL_API}/ofertas?id=${id}`)
             .toPromise()
             .then((resposta: any) => {
                 //console.log(respota.shift());
                 //console.log(respota[0]);
                 return resposta.shift();//JSON.parse(JSON.stringify(respota.shift())).data;
+            });
+    }
+
+    public getComoUsarOfertaPorId(id: number): Promise<string> {
+        return this.http.get(`${URL_API}/como-usar?id=${id}`)
+            .toPromise()
+            .then((resposta: any) => {
+                return resposta[0].descricao;
+            });
+    }
+
+    public getOndeFicaOfertaPorId(id: number): Promise<string> {
+        return this.http.get(`${URL_API}/onde-fica?id=${id}`)
+            .toPromise()
+            .then((resposta: any) => {
+                return resposta[0].descricao;
             });
     }
 
