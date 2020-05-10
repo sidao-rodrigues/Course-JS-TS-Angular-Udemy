@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 
@@ -59,7 +59,7 @@ export class OfertasService {
     public pesquisaOfertas(termo: string): Observable<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?descricao_oferta_like=${termo}`)//só pode-se utiliza o _like no json-serve isso irá depender de cada API
             .pipe(retry(10))
-            .pipe(map((resposta: any) => {
+            .pipe(map((resposta: any) => { /* no lugar de any é para ser Response mas está depreciado */
                 return resposta;
             }));
     }
