@@ -18,10 +18,15 @@ export class ComoUsarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   this.ofertaService.getComoUsarOfertaPorId(this.route.parent.snapshot.params['id'])
-    .then((descricao: string) => { 
-      this.comoUsar = descricao;
+
+    this.route.parent.params.subscribe((parametros: any) => {
+      this.ofertaService.getComoUsarOfertaPorId(parametros.id)
+        .then((descricao: string) => { 
+          this.comoUsar = descricao;
+        });
     });
+
+    
   }
 
 }
