@@ -2,7 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { OfertasService } from "../ofertas.service";
+import { CarrinhoService } from "../carrinho.service";
+
 import { Oferta } from "../shared/oferta.model";
+
+
 //import { Observable, Observer, Subscription } from 'rxjs';
 //import {interval} from "rxjs";
 
@@ -23,7 +27,8 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute, 
-    private ofertasService: OfertasService
+    private ofertasService: OfertasService,
+    private carrinhoService: CarrinhoService
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +89,11 @@ export class OfertaComponent implements OnInit, OnDestroy {
       console.log(parametro);
     })*///subscribe
     
+  }
+
+  public adicinarItemCarrinho(): void {
+    this.carrinhoService.incluirItem(this.oferta);
+    console.log(this.carrinhoService.exibirItens());
   }
 
   ngOnDestroy(): void {

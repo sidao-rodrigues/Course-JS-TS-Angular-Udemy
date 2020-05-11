@@ -18,6 +18,7 @@ import { DiversaoComponent } from './diversao/diversao.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { CarrinhoService } from "./carrinho.service";
 
 //pipe
 import { DescricaoReduzida } from "./util/descricao-reduzida.pipe";
@@ -46,7 +47,7 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [ CarrinhoService, { provide: LOCALE_ID, useValue: 'pt' }], //{ provide: CarrinhoService, useValue: CarrinhoService } // mesa coisa
   bootstrap: [AppComponent]
 })
 export class AppModule { }
