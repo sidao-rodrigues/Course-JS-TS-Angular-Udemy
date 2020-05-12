@@ -55,4 +55,13 @@ export class Auth {
         }
         return retorno;*/
     }
+
+    public sair(): void {
+        firebase.auth().signOut()
+            .then(() => {
+                localStorage.removeItem('idToken');
+                this.tokenId = undefined;
+                this.router.navigate(['/']);
+            })
+    }
 }
