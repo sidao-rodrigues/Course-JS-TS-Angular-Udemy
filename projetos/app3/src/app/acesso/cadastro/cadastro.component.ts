@@ -39,7 +39,10 @@ export class CadastroComponent implements OnInit {
       this.formulario.value.nome_usuario,
       this.formulario.value.senha,
     );
-    this.auth.cadastraUsuario(usuario);
+    this.auth.cadastraUsuario(usuario)
+      .then((resposta: any) => {
+        this.exibirPainelLogin();
+      });
   }
 
 }

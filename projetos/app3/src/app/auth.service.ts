@@ -2,10 +2,10 @@ import { Usuario } from "./acesso/usuario.model";
 import * as firebase from 'firebase';
 
 export class Auth {
-    public cadastraUsuario(usuario: Usuario) {
+    public cadastraUsuario(usuario: Usuario): Promise<any> {
         //console.log('Usuario : ', usuario);
 
-        firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.senha)
+        return firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.senha)
             .then((resposta: any) => {
 
                 //remover a senha do atributo senha do objeto usuário
