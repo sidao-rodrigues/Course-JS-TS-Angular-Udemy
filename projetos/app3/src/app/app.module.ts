@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
+import { RouterModule, Router } from "@angular/router";
 
+import { ROUTES } from "./app.routes";
 import { Auth } from "./auth.service";
 
 import { AppComponent } from './app.component';
@@ -26,7 +28,8 @@ import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [Auth],
   bootstrap: [AppComponent]
