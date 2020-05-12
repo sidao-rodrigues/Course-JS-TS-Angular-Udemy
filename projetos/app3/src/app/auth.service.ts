@@ -39,4 +39,16 @@ export class Auth {
             })
             .catch((error: Error) => console.log(error));
     }
+
+    public autenticado(): boolean {
+        return this.tokenId !== undefined;
+        /*let retorno: boolean = true;
+
+        if(this.tokenId !== undefined){
+            retorno = true;
+        } else {
+            retorno = false;
+        }
+        return retorno;*/
+    }
 }
