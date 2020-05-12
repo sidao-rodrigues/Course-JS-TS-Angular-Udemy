@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { state, style, trigger, transition, animate } from '@angular/animations';
+import { state, style, trigger, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-acesso',
@@ -12,7 +12,7 @@ import { state, style, trigger, transition, animate } from '@angular/animations'
       })),
       transition('void => criado', [
         style({ 'opacity': 0, 'transform': 'translate(-100px, 0)'}),
-        animate('1s 500ms ease-in-out')
+        animate('1s 200ms ease-in-out')
       ])
     ]),
     trigger('animacao-painel', [
@@ -21,7 +21,19 @@ import { state, style, trigger, transition, animate } from '@angular/animations'
       })),
       transition('void => criado', [
         style({ 'opacity': 0, 'transform': 'translate(100px, 0)'}),
-        animate('1s 500ms ease-in-out')
+        //--------//
+        animate('1.5s 200ms ease-in-out', keyframes([
+          style({ 'offset': 0.15, 'opacity': 1, 'transform': 'translateX(0)' }),
+          style({ 'offset': 0.85, 'opacity': 1, 'transform': 'translateX(0)' }),
+
+          style({ 'offset': 0.87, 'opacity': 1, 'transform': 'translateY(-10px)' }),
+          style({ 'offset': 0.89, 'opacity': 1, 'transform': 'translateY(10px)' }),
+          style({ 'offset': 0.92, 'opacity': 1, 'transform': 'translateY(-10px)' }),
+          style({ 'offset': 0.94, 'opacity': 1, 'transform': 'translateY(10px)' }),
+          style({ 'offset': 0.96, 'opacity': 1, 'transform': 'translateY(-10px)' }),
+          style({ 'offset': 0.98, 'opacity': 1, 'transform': 'translateY(10px)' }),
+          //style({ 'offset': 1, 'opacity': 1, 'transform': 'translateX(0)' })
+        ]))
       ])
     ])
   ]
