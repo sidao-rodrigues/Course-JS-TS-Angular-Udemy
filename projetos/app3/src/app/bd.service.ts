@@ -9,9 +9,14 @@ export class Bd {
 
     public publicar(publicacao: any): void {
         
-        let nomeImagem = Date.now();
+        //let nomeImagem = Date.now();
 
-        firebase.storage().ref()
+        firebase.database().ref(`publicacoes/${btoa(publicacao.email)}`)
+         .push({ titulo: publicacao.titulo })
+         .then((respota: any) => {
+            let nomeImagem = respota.key;
+
+            firebase.storage().ref()
             .child(`imagens/${nomeImagem}`)
             .put(publicacao.imagem)
             .on(firebase.storage.TaskEvent.STATE_CHANGED, 
@@ -31,11 +36,31 @@ export class Bd {
                     //console.log('upload completo');
                 }
             );
-        
-        /*
-        firebase.database().ref(`publicacoes/${btoa(publicacao.email)}`)
-            .push({ titulo: publicacao.titulo })*/
+         })
+    }
 
-        //console.log(publicacao);
+    public consultaPublicacoes(email: string): any {
+        firebase.database().ref(`publicacoes/${btoa(email)}`)
+            .once('value')
+            .then((snapshot: any) => {
+                //console.log(snapshot.val());
+
+                let publicacoes: Array<any> = [];
+                
+                snapshot.forEach((childSnapshot: any) => {
+                    
+                    let publicacao = childSnapshot.val()
+                    
+                    //consultar a url da imagem (storage)
+                    firebase.storage().ref()
+                        .child(`imagens/${childSnapshot.key}`)
+                        .getDownloadURL()
+                        .then((url: string) => {
+                            publicacao.url_imagem = url;
+
+                            publicacoes.push(publicacao);
+                        })
+                })
+            })
     }
 }
