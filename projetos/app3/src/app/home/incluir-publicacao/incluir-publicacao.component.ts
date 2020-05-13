@@ -12,6 +12,7 @@ import { Bd } from "../../bd.service";
 export class IncluirPublicacaoComponent implements OnInit {
 
   public email: string;
+  private imagem: any;
 
   public formulario: FormGroup = new FormGroup({
     'titulo': new FormControl(null),
@@ -28,12 +29,13 @@ export class IncluirPublicacaoComponent implements OnInit {
   public publicar(): void {
     this.bd.publicar({
       email: this.email,
-      titulo: this.formulario.value.titulo
+      titulo: this.formulario.value.titulo,
+      imagem: this.imagem[0]
     });
   }
 
   public preparaImagemUpload(evento: Event) {
-    console.log((<HTMLInputElement>evento.target).files);
+    this.imagem = (<HTMLInputElement>evento.target).files;
   }
 
 }
