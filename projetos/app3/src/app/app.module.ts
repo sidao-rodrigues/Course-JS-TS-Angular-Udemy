@@ -8,6 +8,7 @@ import { ROUTES } from "./app.routes";
 import { Auth } from "./auth.service";
 import { AuthGuard } from "./auth-guard.service";
 import { Bd } from "./bd.service";
+import { Progresso } from "./progresso.service";
 
 import { AppComponent } from './app.component';
 import { AcessoComponent } from './acesso/acesso.component';
@@ -35,7 +36,7 @@ import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-pu
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [Auth, AuthGuard, Bd],
+  providers: [Auth, AuthGuard, Bd, Progresso],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

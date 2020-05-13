@@ -1,6 +1,11 @@
+import { Progresso } from "./progresso.service";
 import * as firebase from 'firebase';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Bd {
+
+    constructor(private progresso: Progresso) {  }
 
     public publicar(publicacao: any): void {
         
@@ -12,14 +17,18 @@ export class Bd {
             .on(firebase.storage.TaskEvent.STATE_CHANGED, 
                 //acompanhamento do upload
                 (snapshot: any) => {
-                    console.log(snapshot);
+                    this.progresso.status = 'andamento';
+                    this.progresso.estado = snapshot;
+                    //console.log(snapshot);
                 },
                 (error) => {
-                    console.log(error);
+                    this.progresso.status = 'erro';
+                    //console.log(error);
                 },
                 () => {
+                    this.progresso.status = 'concluido';
                     //finalização do processo
-                    console.log('upload completo');
+                    //console.log('upload completo');
                 }
             );
         
