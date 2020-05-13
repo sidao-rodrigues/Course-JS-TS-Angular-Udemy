@@ -39,8 +39,10 @@ export class Bd {
          })
     }
 
-    public consultaPublicacoes(email: string): any {
-        firebase.database().ref(`publicacoes/${btoa(email)}`)
+    public consultaPublicacoes(email: string): Promise<any> {
+
+        return new Promise((resolve, reject) => {
+            firebase.database().ref(`publicacoes/${btoa(email)}`)
             .once('value')
             .then((snapshot: any) => {
                 //console.log(snapshot.val());
@@ -58,9 +60,20 @@ export class Bd {
                         .then((url: string) => {
                             publicacao.url_imagem = url;
 
-                            publicacoes.push(publicacao);
-                        })
-                })
-            })
+                            //consultar nome do usuário
+                            firebase.database().ref(`usuario_detalhe/${btoa(email)}`)
+                                .once('value')
+                                .then((snapshot: any) => {
+                                    publicacao.nome_usuario = snapshot.val().nome_usuario;
+                                  
+                                    publicacoes.push(publicacao);
+                                });
+                            
+                        });
+                });
+                resolve(publicacoes);
+            });
+        });
+
     }
 }
