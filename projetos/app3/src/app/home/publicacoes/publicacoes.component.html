@@ -5,7 +5,7 @@
         <p class="card-text"><strong>{{ publicacao.nome_usuario }}</strong></p>
       </div>
 
-      <img class="card-img" [src]="publicacao.url_imagem" />
+      <img class="card-img" [src]="publicacao.url_imagem || ''" /><!--Fazer isso com o passáro urbano para erro de imagen, isso ocorre pq a imagem não tinha sido carregado-->
       
       <div class="card-body">
         <p class="card-text">
